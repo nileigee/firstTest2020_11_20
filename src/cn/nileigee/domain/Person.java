@@ -9,6 +9,19 @@ public class Person {
         this.age = age;
     }
 
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        Person person = (Person) object;
+        return age == person.age &&
+                java.util.Objects.equals(name, person.name);
+    }
+
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), name, age);
+    }
+
     public Person() {
     }
 
